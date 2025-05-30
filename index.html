@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Surat Keluar - SDN 2 Pasir Putih</title>
+  <title>Detail Surat - SDN 2 Pasir Putih</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
@@ -44,30 +44,33 @@
 <body>
   <div class="container" id="detail">Memuat data...</div>
   <script>
-    const data = JSON.parse(localStorage.getItem("suratKeluar")) || [];
     const no = new URLSearchParams(location.search).get("no_surat");
     const div = document.getElementById("detail");
-    if (!no) {
-      div.innerHTML = '<p class="not-found">❌ Nomor surat tidak ditemukan pada URL.</p>';
-    } else {
-      const d = data.find(s => s.nomor === no);
-      if (!d) {
-        div.innerHTML = '<p class="not-found">❌ Surat tidak ditemukan dalam sistem.</p>';
-      } else {
-        const link = "https://drive.google.com/file/d/" + d.linkId + "/view";
-        div.innerHTML = `
-          <h2>Detail Surat Keluar</h2>
-          <table>
-            <tr><td class="label">Nomor</td><td>${d.nomor}</td></tr>
-            <tr><td class="label">Tanggal</td><td>${d.tanggal}</td></tr>
-            <tr><td class="label">Tujuan</td><td>${d.tujuan}</td></tr>
-            <tr><td class="label">Perihal</td><td>${d.perihal}</td></tr>
-            <tr><td class="label">Status</td><td>${d.status}</td></tr>
-          </table>
-          <a class="download-btn" href="${link}" target="_blank">⬇️ Unduh Surat</a>
-        `;
-      }
-    }
+
+    fetch("data.json")
+      .then(res => res.json())
+      .then(data => {
+        const d = data.find(s => s.nomor === no);
+        if (!d) {
+          div.innerHTML = '<p class="not-found">❌ Surat tidak ditemukan dalam sistem.</p>';
+        } else {
+          const link = "https://drive.google.com/file/d/" + d.linkId + "/view";
+          div.innerHTML = `
+            <h2>Detail Surat Keluar</h2>
+            <table>
+              <tr><td class="label">Nomor</td><td>${d.nomor}</td></tr>
+              <tr><td class="label">Tanggal</td><td>${d.tanggal}</td></tr>
+              <tr><td class="label">Tujuan</td><td>${d.tujuan}</td></tr>
+              <tr><td class="label">Perihal</td><td>${d.perihal}</td></tr>
+              <tr><td class="label">Status</td><td>${d.status}</td></tr>
+            </table>
+            <a class="download-btn" href="${link}" target="_blank">⬇️ Unduh Surat</a>
+          `;
+        }
+      })
+      .catch(() => {
+        div.innerHTML = '<p class="not-found">❌ Gagal memuat data surat.</p>';
+      });
   </script>
 </body>
 </html>
