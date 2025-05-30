@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin - SINDE SDN 2 Pasir Putih</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="header">
+    <img src="logo-sdn2.png" alt="Logo">
+    <div class="header-text">
+      <h1>SD NEGERI 2 PASIR PUTIH</h1>
+      <p>SINDE - Sistem Informasi Naskah Dinas Elektronik</p>
+    </div>
+  </div>
+
+  <div class="container login-container" id="loginContainer">
+    <h2>🔒 Login Admin</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Masuk</button>
+    <p id="loginError" class="error-text" style="display:none;">Username atau Password salah!</p>
+  </div>
+
+  <div class="container" id="appContainer" style="display:none;">
+    <button onclick="showForm()">➕ Tambah Surat</button>
+    <button onclick="backupData()">💾 Backup Data</button>
+    <table id="suratTable">
+      <thead>
+        <tr>
+          <th>No</th><th>Nomor Surat</th><th>Tanggal</th><th>Tujuan</th><th>Perihal</th><th>Status</th><th>Download</th><th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div id="formDiv" style="display:none;">
+      <h3>Form Surat Keluar</h3>
+      <form id="suratForm">
+        <input name="nomor" placeholder="Nomor Surat" required><br>
+        <input name="tanggal" type="date" required><br>
+        <input name="tujuan" placeholder="Tujuan" required><br>
+        <input name="perihal" placeholder="Perihal" required><br>
+        <select name="status"><option value="Sudah">Sudah Ditandatangani</option><option value="Belum">Belum Ditandatangani</option></select><br>
+        <input name="link" placeholder="Link Google Drive" required><br>
+        <button type="submit">Simpan</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
