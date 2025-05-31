@@ -12,20 +12,16 @@
       padding: 20px;
       text-align: center;
     }
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .header img {
+    .top-logo {
       height: 100px;
+      display: block;
+      margin: 0 auto 10px auto;
     }
-    .header h1 {
-      font-size: 22px;
+    .school-title {
+      font-size: 24px;
       color: #007BFF;
-      margin: 0;
+      margin-bottom: 20px;
+      font-weight: bold;
     }
     .container {
       max-width: 700px;
@@ -80,10 +76,8 @@
 </head>
 <body>
 
-  <div class="header">
-    <img src="logo-sdn2.png" alt="Logo Sekolah">
-    <h1>SD NEGERI 2 PASIR PUTIH</h1>
-  </div>
+  <img src="logo-sdn2.png" alt="Logo Sekolah" class="top-logo">
+  <h1 class="school-title">SD NEGERI 2 PASIR PUTIH</h1>
 
   <div class="container" id="detail">Memuat data...</div>
 
@@ -100,7 +94,7 @@
         } else {
           const link = "https://drive.google.com/file/d/" + d.linkId + "/view";
           div.innerHTML = `
-            <h2>📄 Detail Surat</h2>
+            <h2>📄 Detail Surat Keluar</h2>
             <table>
               <tr><td class="label">Nomor</td><td>${d.nomor}</td></tr>
               <tr><td class="label">Tanggal</td><td>${d.tanggal}</td></tr>
