@@ -12,8 +12,23 @@
       padding: 20px;
       text-align: center;
     }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .header img {
+      height: 100px;
+    }
+    .header h1 {
+      font-size: 22px;
+      color: #007BFF;
+      margin: 0;
+    }
     .container {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       background: white;
       border-radius: 12px;
@@ -36,13 +51,30 @@
       margin-top: 15px;
       border-collapse: collapse;
     }
-    td { padding: 8px; text-align: left; }
-    .label { font-weight: bold; width: 40%; }
-    .not-found { color: red; font-weight: bold; }
+    td {
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .label {
+      font-weight: bold;
+      width: 40%;
+    }
+    .not-found {
+      color: red;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
+
+  <div class="header">
+    <img src="logo-sdn2.png" alt="Logo Sekolah">
+    <h1>SD NEGERI 2 PASIR PUTIH</h1>
+  </div>
+
   <div class="container" id="detail">Memuat data...</div>
+
   <script>
     const no = new URLSearchParams(location.search).get("no_surat");
     const div = document.getElementById("detail");
@@ -56,9 +88,9 @@
         } else {
           const link = "https://drive.google.com/file/d/" + d.linkId + "/view";
           div.innerHTML = `
-            <h2>Detail Surat</h2>
+            <h2>Detail Surat Keluar</h2>
             <table>
-              <tr><td class="label">Nomor Surat</td><td>${d.nomor}</td></tr>
+              <tr><td class="label">Nomor</td><td>${d.nomor}</td></tr>
               <tr><td class="label">Tanggal</td><td>${d.tanggal}</td></tr>
               <tr><td class="label">Penandatangan</td><td>${d.penandatangan}</td></tr>
               <tr><td class="label">Jabatan</td><td>${d.jabatan}</td></tr>
