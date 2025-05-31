@@ -36,15 +36,20 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     .download-btn {
-      background: #007BFF;
+      background: linear-gradient(to right, #28a745, #218838);
       color: white;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       text-decoration: none;
       font-size: 16px;
-      margin-top: 10px;
+      margin-top: 20px;
       display: inline-block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+    .download-btn:hover {
+      background: linear-gradient(to right, #218838, #1e7e34);
     }
     table {
       width: 100%;
@@ -54,18 +59,18 @@
       overflow: hidden;
     }
     td {
-      padding: 10px;
+      padding: 12px;
       text-align: left;
     }
     .label {
       font-weight: bold;
       width: 40%;
     }
-    tr:nth-child(even) {
-      background-color: #f0f8ff;
-    }
     tr:nth-child(odd) {
-      background-color: #ffffff;
+      background-color: #f1f9ff;
+    }
+    tr:nth-child(even) {
+      background-color: #e6f7ff;
     }
     .not-found {
       color: red;
@@ -95,7 +100,7 @@
         } else {
           const link = "https://drive.google.com/file/d/" + d.linkId + "/view";
           div.innerHTML = `
-            <h2>Detail Surat Keluar</h2>
+            <h2>📄 Detail Surat Keluar</h2>
             <table>
               <tr><td class="label">Nomor</td><td>${d.nomor}</td></tr>
               <tr><td class="label">Tanggal</td><td>${d.tanggal}</td></tr>
@@ -105,7 +110,7 @@
               <tr><td class="label">Perihal</td><td>${d.perihal}</td></tr>
               <tr><td class="label">Status Tandatangan</td><td>${d.status}</td></tr>
             </table>
-            <a class="download-btn" href="${link}" target="_blank">⬇️ Unduh Surat</a>
+            <a class="download-btn" href="${link}" target="_blank">⬇️ UNDUH SURAT</a>
           `;
         }
       })
