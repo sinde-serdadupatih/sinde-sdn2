@@ -50,15 +50,22 @@
       width: 100%;
       margin-top: 15px;
       border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
     }
     td {
-      padding: 8px;
+      padding: 10px;
       text-align: left;
-      vertical-align: top;
     }
     .label {
       font-weight: bold;
       width: 40%;
+    }
+    tr:nth-child(even) {
+      background-color: #f0f8ff;
+    }
+    tr:nth-child(odd) {
+      background-color: #ffffff;
     }
     .not-found {
       color: red;
